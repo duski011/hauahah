@@ -30,28 +30,28 @@ if(config.spotifyapi.enabled) {
   }}
 
 const status = queue =>
-  `Âm lượng: \`${queue.volume}%\` | Bộ lọc: \`${queue.filters.join(', ') || 'Tắt'}\` | Lặp: \`${
-    queue.repeatMode ? (queue.repeatMode === 2 ? 'Danh sách phát' : 'Bài hát') : 'Tắt'
-  }\` | Autoplay: \`${queue.autoplay ? 'Bật' : 'Tắt'}\``
+  `Volume: \`${queue.volume}%\` | Filters: \`${queue.filters.join(', ') || 'Off'}\` | Repeat: \`${
+     queue.repeatMode ? (queue.repeatMode === 2 ? 'Playlist' : 'Song') : 'Off'
+   }\` | Autoplay: \`${queue.autoplay ? 'On' : 'Off'}\``
 
 client.distube.on('addSong', (queue, song) =>
   queue.textChannel.send({embeds: [
       new MessageEmbed()
       .setColor('#ccff48')
-      .setAuthor({name: 'Đã thêm...', iconURL: 'https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/logo.gif'})
+      .setAuthor({name: 'Added...', iconURL: 'https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/logo.gif'})
       .setDescription(`[${song.name}](${song.url})`)
       .setThumbnail(song.thumbnail)
-      .addField("🔷 | Trạng thái", `
+      .addField("🔷 | Status", `
       ┕${status(queue).toString()}`, false)
-        .addField('👀 | Lượt nghe', `
+        .addField('👀 | views', `
         ┕${Format.format(song.views)}`, true)
-        .addField('👍 | Thích', `
+        .addField('👍 | like', `
         ┕${Format.format(song.likes)}`, true)
-        .addField('👎 | Không thích', `
+        .addField('👎 | dislike', `
         ┕${Format.format(song.dislikes)}`, true)
-        .addField('⌛ | Thời gian', `
+        .addField('⌛ | Played', `
         ┕${song.formattedDuration}`, true)
-        .addField("👌 | Yêu cầu bởi",`
+        .addField("👌 | request by ",`
         ┕${song.user}`, true)
   ]})
 )
