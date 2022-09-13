@@ -17,7 +17,7 @@ module.exports = {
         if(!voiceChannel) return message.reply({embeds: [
             new MessageEmbed()
             .setColor('RED')
-            .setDescription(`🚫 | Bạn cần tham gia một kênh thoại để sử dụng tính năng này.`)
+            .setDescription(`🚫 | You need to join a voice channel to use this feature.`)
         ]});
 
         if(queue) {
@@ -25,7 +25,7 @@ module.exports = {
                 return message.reply({embeds: [
                     new MessageEmbed()
                     .setColor('RED')
-                    .setDescription(`🚫 | Bạn cần vào cùng một kênh thoại với bot!`)
+                    .setDescription(`🚫 | You need to be on the same voice channel as the bot!`)
                 ]});
             }
         }
@@ -33,8 +33,8 @@ module.exports = {
         const msg = await message.reply({embeds: [
             new MessageEmbed()
             .setColor('#ccff48')
-            .setAuthor({name: 'Tìm kiếm', iconURL: 'https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/logo.gif'})
-            .setDescription(`🎵 | Đang tìm kiếm...`)
+            .setAuthor({name: 'Search'', iconURL: 'https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/logo.gif'})
+            .setDescription(`🎵 | Searching...`)
         ]})
 
         setTimeout(() => msg.delete() , 5000);
