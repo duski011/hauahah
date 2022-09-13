@@ -41,13 +41,13 @@ module.exports = {
         .setAuthor({name: 'Đang phát...', iconURL: 'https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/logo.gif'})
         .setDescription(`[${song.name}](${song.url})`)
         .setThumbnail(song.thumbnail)
-        .addField("🔷 | Trạng thái", `${status(queue).toString()}`, false)
-        .addField('👀 | Lượt nghe', `${Format.format(song.views)}`, true)
-        .addField('👍 | Thích', `${Format.format(song.likes)}`, true)
-        .addField('👎 | Không thích', `${Format.format(song.dislikes)}`, true)
-        .addField('⌛ | Đã phát', `${queue.formattedCurrentTime} / ${song.formattedDuration}`, true)
-        .addField('📩 | Link tải', `[Click vào đây](${song.streamURL})`, true)
-        .addField("👌 | Yêu cầu bởi",` ${song.user}`, true)
+        .addField("🔷 | Status", `${status(queue).toString()}`, false)
+        .addField('👀 | Views', `${Format.format(song.views)}`, true)
+        .addField('👍 | like', `${Format.format(song.likes)}`, true)
+        .addField('👎 | Dislike ', `${Format.format(song.dislikes)}`, true)
+        .addField('⌛ | Played', `${queue.formattedCurrentTime} / ${song.formattedDuration}`, true)
+        .addField('📩 | Link ', `[Click vào đây](${song.streamURL})`, true)
+        .addField("👌 | Request by",` ${song.user}`, true)
 
         message.reply({embeds: [embed]});
     }
