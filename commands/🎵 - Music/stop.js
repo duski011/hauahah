@@ -30,8 +30,8 @@ module.exports = {
         message.channel.send({embeds: [
             new MessageEmbed()
             .setColor('EF4F4F')
-            .setAuthor({name: 'Ngắt kết nối', iconURL: 'https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/logo.gif'})
-            .setDescription('Đã ngắt kết nối với kênh thoại!')
+            .setAuthor({name: 'Disconnect', iconURL: 'https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/logo.gif'})
+            .setDescription('Disconnected from voice channel!')
         ]});
     }
 }
