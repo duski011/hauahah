@@ -4,9 +4,9 @@ const { stripIndent } = require('common-tags')
 module.exports = {
     name: 'help',
     aliases: ['h'],
-    category: '⚙️ - Thông tin',
-    usage: 'd!help [tên lệnh]',
-    description: 'Hưỡng dẫn sử dụng lệnh',
+    category: '⚙️ - Information',
+    usage: '${prefix}help [command name]',
+    description: 'Instructions for using the command',
 
     async run (client, message, args) {
         if (!args[0]) return getAll(client, message);
@@ -17,8 +17,8 @@ module.exports = {
 function getAll (client, message) {
     const embed = new MessageEmbed()
     .setColor('#ccff48')
-    .setTitle(`📫 | Danh sách lệnh của ${client.user.username}`)
-    .setFooter(`Sử dụng d!help [tên lệnh] để biết thêm chi tiết!`)
+    .setTitle(`📫 |  Command list of ${client.user.username}`)
+    .setFooter(`Use for more details!`)
 
     const commands = (category) => {
         return client.commands
@@ -39,12 +39,12 @@ function getCMD(client, message, input) {
     const embed = new MessageEmbed()
     const cmd = client.commands.get(input.toLowerCase() || client.commands.get(client.aliases.get(input.toLowerCase())))
 
-    if (cmd.name) info = `**Tên lệnh:** ${cmd.name}`
-    if (cmd.aliases) info += `\n**Tên gọi khác:** ${cmd.aliases.map(a => `\`${a}\``).join(',')}`
-    if (cmd.description) info += `\n**Chi tiết lệnh:** ${cmd.description}`
+    if (cmd.name) info = `**Command name:** ${cmd.name}`
+    if (cmd.aliases) info += `\n**Other name:** ${cmd.aliases.map(a => `\`${a}\``).join(',')}`
+    if (cmd.description) info += `\n**Command details:** ${cmd.description}`
     if (cmd.usage) {
-        info += `\n**Cách sử dụng lệnh:** ${cmd.usage}`;
-        embed.setFooter("Cú pháp <> = bắt buộc, [] = không bắt buộc")
+        info += `\n**How to use the command:** ${cmd.usage}`;
+        embed.setFooter("Syntax <> = required, [] = optional")
     }
     return message.channel.send({embeds: [embed.setColor('GREEN').setDescription(info)]})
 }
