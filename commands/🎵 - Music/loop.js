@@ -37,11 +37,11 @@ module.exports = {
             message.reply({embeds: [
                 new MessageEmbed()
                 .setColor('EF4F4F') 
-                .setAuthor({name: 'Lỗi', iconURL: 'https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/logo.gif'})
-                .setDescription('Bạn phải chọn 1 lựa chọn!')
-                .addField('off', 'Ngừng lặp bài hát.', true)
-                .addField('song', 'Lặp lại bài hát hiện tại.', true)
-                .addField('queue', 'Lặp lại tất cả bài hát trong hàng đợi.', true)
+                .setAuthor({name: 'Error', iconURL: 'https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/logo.gif'})
+                .setDescription('You must choose 1 option!')
+                .addField('off', 'Stop repeating the song..', true)
+                .addField('song', 'Repeat current song.', true)
+                .addField('queue', 'Repeat all songs in the queue.', true)
             ]})
         }
 
@@ -57,12 +57,12 @@ module.exports = {
             break
         }
         mode = queue.setRepeatMode(mode)
-        mode = mode ? (mode === 2 ? 'Lặp lại danh sách phát' : 'Lặp lại bài hát') : 'Tắt'
+        mode = mode ? (mode === 2 ? 'Repeat Playlist' : 'Song Repeat') : 'Turn off'
         message.reply({embeds: [
             new MessageEmbed()
             .setColor('#ccff48')
-            .setAuthor({name: 'Lặp lại', iconURL: 'https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/logo.gif'})
-            .setDescription(`Đã chỉnh chế độ lặp thành **${mode}**!`)
+            .setAuthor({name: 'Repeat', iconURL: 'https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/logo.gif'})
+            .setDescription(` Adjusted the repeat mode to **${mode}**!`)
         ]})
     }
 }
