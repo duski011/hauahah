@@ -60,14 +60,14 @@ client.distube.on('addList', (queue, playlist) =>
     queue.textChannel.send({embeds: [
         new MessageEmbed()
         .setColor('#ccff48')
-        .setAuthor({name: 'Đã thêm...', iconURL: 'https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/logo.gif'})
-        .setDescription(`Đã thêm [${playlist.name}](${playlist.url}) (${playlist.songs.length} bài hát) vào danh sách phát`)
+        .setAuthor({name: 'Added...', iconURL: 'https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/logo.gif'})
+        .setDescription(`Added [${playlist.name}](${playlist.url}) (${playlist.songs.length} songs) to playlist`)
         .setThumbnail(playlist.thumbnail)
-        .addField("🔷 | Trạng thái", `
+        .addField("🔷 | Status", `
         ┕${status(queue).toString()}`, false)
-        .addField('⌛ | Thời gian', `
+        .addField('⌛ | Time', `
         ┕${playlist.formattedDuration}`, true)
-        .addField("👌 | Yêu cầu bởi",`
+        .addField("👌 | Requested by",`
         ┕${playlist.user}`, true)
     ]})
 )
@@ -76,32 +76,32 @@ client.distube.on('playSong', (queue, song) =>
     queue.textChannel.send({embeds: [
         new MessageEmbed()
         .setColor('#ccff48')
-        .setAuthor({name: 'Đang phát...', iconURL: 'https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/logo.gif'})
+        .setAuthor({name: 'Playing...', iconURL: 'https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/logo.gif'})
         .setDescription(`[${song.name}](${song.url})`)
         .setThumbnail(song.thumbnail)
         .setColor('#ccff48')
-        .setAuthor({name: 'Đang phát...', iconURL: 'https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/logo.gif'})
+        .setAuthor({name: 'Playing...', iconURL: 'https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/logo.gif'})
         .setDescription(`[${song.name}](${song.url})`)
         .setThumbnail(song.thumbnail)
-        .addField("🔷 | Trạng thái", `
+        .addField("🔷 | Status", `
         ┕${status(queue).toString()}`, false)
-        .addField('🆙 | Đăng tải lên bởi', `
+        .addField('🆙 | Uploaded by', `
         ┕[${song.uploader.name}](${song.uploader.url})`, true)
-        .addField('👀 | Lượt nghe', `
+        .addField('👀 | Listens', `
         ┕${Format.format(song.views)}`, true)
-        .addField('👍 | Thích', `
+        .addField('👍 | Like', `
         ┕${Format.format(song.likes)}`, true)
-        .addField('⌛ | Thời gian', `
+        .addField('⌛ | Time', `
         ┕${song.formattedDuration}`, true)
-        .addField('📩 | Link tải', `
-        ┕[Click vào đây](${song.streamURL})`, true)
-        .addField("👌 | Yêu cầu bởi",`
+        .addField('📩 | Download link', `
+        ┕[Click here](${song.streamURL})`, true)
+        .addField("👌 | Requested by",`
         ┕${song.user}`, true)
-        .addField('📻 | Phát nhạc tại', `
-        ┕🔊 | ${client.channels.cache.get(queue.voiceChannel.id)}
-        ┕🪄 | ${queue.voiceChannel.bitrate / 1000}  kbps`, false)
-        .addField("🤖 | Đề xuất",`[${song.related[0].name}](${song.related[0].url})
-        ┕⌛ | Thời gian: ${song.related[0].formattedDuration} | 🆙 | Đăng tải lên bởi: [${song.related[0].uploader.name}](${song.related[0].uploader.url})`, false)
+        .addField('📻 | Play music at', `
+        | ${client.channels.cache.get(queue.voiceChannel.id)}
+        | ${queue.voiceChannel.bitrate / 1000} kbps`, false)
+        .addField("🤖 | Recommended",`[${song.related[0].name}](${song.related[0].url})
+        | Time: ${song.related[0].formattedDuration} | | Uploaded by: [${song.related[0].uploader.name}](${song.related[0].uploader.url})`, false)
     ]})
   )
   .on('error', (channel, e) => {
@@ -111,21 +111,20 @@ client.distube.on('playSong', (queue, song) =>
   .on('empty', channel => channel.send({embeds: [
       new MessageEmbed()
       .setColor('#ccff48')
-      .setAuthor({name: 'Đã hết...', iconURL: 'https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/logo.gif'})
-      .setDescription('Hết bài hát trong danh sách')
+      .setAuthor({name: 'Sold out...', iconURL: 'https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/logo.gif'})
+      .setDescription('End of songs in playlist')
     ]}))
   .on('searchNoResult', (message, query) =>
     message.channel.send({embeds: [
         new MessageEmbed()
         .setColor('#ccff48')
-        .setAuthor({name: 'Không tìm thấy...', iconURL: 'https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/logo.gif'})
-        .setDescription(`Không tìm thấy bài hát nào với từ khóa \`${query}\``)
+        .setAuthor({name: 'Not found...', iconURL: 'https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/logo.gif'})
+        .setDescription(`No songs found with keyword \`${query}\``)
     ]})
   )
   .on('finish', queue => queue.textChannel.send({embeds: [
       new MessageEmbed()
       .setColor('#ccff48')
-      .setAuthor({name: 'Đã hết...', iconURL: 'https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/logo.gif'})
-      .setDescription('Hết bài hát trong danh sách')
+      .setAuthor({name: 'Sold out...', iconURL: 'https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/logo.gif'})
+      .setDescription('End of songs in playlist')
     ]}))
-
