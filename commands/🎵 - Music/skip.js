@@ -36,7 +36,7 @@ module.exports = {
             new MessageEmbed()
             .setColor('#ccff48')
             .setAuthor({name: 'skip the song', iconURL: 'https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/logo.gif'})
-            .setDescription(Skipped the song!')
+            .setDescription('Skipped the song!')
         ]});
     }
 }
