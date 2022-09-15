@@ -3,15 +3,15 @@ const client = require("../index");
 client.on("ready", () => {
     console.log("\x1b[34m%s\x1b[0m", `${client.user.tag} đã sẵn sàng hoạt động!`)
     const statuses = [ // status bot
-        "với Pinkduwc._#0510",
+        "BY ILSDUSKI",
         `🏓Ping: ${client.ws.ping}ms!`,
-        `với ${client.guilds.cache.size} máy chủ`,
-        `với ${client.guilds.cache.reduce((a, b) => a + b.memberCount, 0)} người dùng`,
+        `with ${client.guilds.cache.size} server`,
+        `with ${client.guilds.cache.reduce((a, b) => a + b.memberCount, 0)} user`,
         "Youtube",
-        "d! / Slash command",
-        "Spotify",
-        "Soundcloud",
-        "hongduccodedao.cf"
+        "${prefix}help / Slash command",
+        "iLEGEND SQUAD",
+        "BY iLsDUSKI ",
+        "iLsSQUAD"
     ]
     let index = 0
     setInterval(() => {
